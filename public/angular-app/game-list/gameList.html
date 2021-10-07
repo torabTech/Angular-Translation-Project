@@ -1,0 +1,10 @@
+<h1> {{vm.title}}</h1>
+
+<ul>
+    <li ng-repeat="game in vm.games | orderBy: '-title'">
+        <h3><a ng-href="#!/games/{{game._id}}">{{game.title}}</a></h3>
+    </li>
+</ul>
+
+
+  
