@@ -1,0 +1,47 @@
+<div class="container mt-4" ng-init='vm.load()'>
+    <h3>Insert New Game To The List</h3>
+    <hr>
+    <form ng-submit='vm.update()'>
+  
+      <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10 ">
+          <input type="text" class="form-control" placeholder="Enter the game title" ng-model='vm.title' required value='vm.title'>
+  
+        </div>
+      </div>
+  
+      <div class="form-group row mt-2">
+        <label for="price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" min="0" placeholder="Enter the game price" formControlName='price' ng-model='vm.price' value="vm.price">
+  
+        </div>
+      </div>
+  
+      <div class="form-group row mt-2">
+        <label for="year" class="col-sm-2 col-form-label">Year</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"  placeholder="Enter the publish year only" ng-model='vm.year' required value="vm.year">
+
+        </div>
+      </div>
+  
+      <div class="form-group row mt-2">
+        <label for="price" class="col-sm-2 col-form-label">Max-Players</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control"  min="1" placeholder="Enter the maximum number of players" formControlName='maxPlayers' ng-model='vm.maxPlayers' required value="vm.maxPlayers">
+  
+        </div>
+      </div>
+
+      <hr>
+      <div class="form-group">
+          <button type="submit" class="btn btn-dark">Update</button> &nbsp;
+
+          <a class="btn btn-info" ng-href='#!/'>Back</a>
+      </div>
+  
+    </form>
+  </div>
+  

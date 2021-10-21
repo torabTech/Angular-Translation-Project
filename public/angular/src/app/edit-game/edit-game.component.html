@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h3>Update Game</h3>
+  <hr>
+  <form (ngSubmit)="editGame()" [formGroup]='form'>
+
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10 ">
+        <input type="text" class="form-control" placeholder="Enter the game title"
+        formControlName='title' required>
+
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="price" class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" min="0" placeholder="Enter the game price" formControlName='price' required>
+
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="year" class="col-sm-2 col-form-label">Year</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="Enter the publish year only" formControlName='year' required>
+
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="price" class="col-sm-2 col-form-label">Max-Players</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control"  min="1" placeholder="Enter the maximum number of players" formControlName='maxPlayers' required>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark">Update</button>
+      &nbsp;
+        <a class="btn btn-success" routerLink='/'>Back</a>
+
+    </div>
+  </form>
+</div>

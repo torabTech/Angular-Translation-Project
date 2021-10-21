@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <h3>Registeration Form</h3>
+  <hr>
+  <form (ngSubmit)="addUser()" [formGroup]='form'>
+
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10 ">
+        <input type="text" class="form-control" placeholder="Enter your name"  formControlName='name' [ngClass]="{ 'is-invalid':submitted && f.name.errors}">
+
+        <div *ngIf='submitted && f.name.errors' class="invalid-feedback">
+          <div *ngIf='f.name.errors.required'>Name is required</div>
+      </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="username" class="col-sm-2 col-form-label">User-Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="Enter your user-name"  formControlName='username' [ngClass]="{ 'is-invalid':submitted && f.username.errors}">
+
+        <div *ngIf='submitted && f.username.errors' class="invalid-feedback">
+          <div *ngIf='f.username.errors.required'>UserName is required</div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="password" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" placeholder="Enter your password" formControlName='password' [ngClass]="{ 'is-invalid':submitted && f.password.errors}">
+
+        <div *ngIf='submitted && f.password.errors' class="invalid-feedback">
+          <div *ngIf='f.password.errors.required'>Password is required</div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="repeatPassword" class="col-sm-2 col-form-label">Repeat-Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" placeholder="Repeat your password" formControlName='repeatPassword'  [ngClass]="{ 'is-invalid':submitted && f.repeatPassword.errors}">
+
+        <div *ngIf='submitted && f.repeatPassword.errors' class="invalid-feedback">
+          <div *ngIf='f.repeatPassword.errors.required'>Password Repeat is Required.</div>
+      </div>
+
+      </div>
+    </div>
+
+    <hr>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark">Register</button>
+    </div>
+
+  </form>
+</div>

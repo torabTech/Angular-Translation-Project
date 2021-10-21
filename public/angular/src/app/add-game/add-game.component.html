@@ -1,0 +1,64 @@
+<div class="container mt-4">
+  <h3>Insert New Game To The List</h3>
+  <hr>
+  <form (ngSubmit)="addGame()" [formGroup]='form'>
+
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10 ">
+        <input type="text" class="form-control" placeholder="Enter the game title"
+        formControlName='title' [ngClass]="{ 'is-invalid':submitted && f.title.errors}">
+
+        <div *ngIf='submitted && f.title.errors' class="invalid-feedback">
+          <div *ngIf='f.title.errors.required'>Title is required</div>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="price" class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" min="0" placeholder="Enter the game price" formControlName='price' [ngClass]="{ 'is-invalid':submitted && f.price.errors}">
+
+        <div *ngIf='submitted && f.price.errors' class="invalid-feedback">
+          <div *ngIf='f.price.errors.required'>Price is required</div>
+      </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="year" class="col-sm-2 col-form-label">Year</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="Enter the publish year only" formControlName='year' [ngClass]="{ 'is-invalid':submitted && f.year.errors}">
+
+        <div *ngIf='submitted && f.year.errors' class="invalid-feedback">
+          <div *ngIf='f.year.errors.required'>Year is required</div>
+      </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group row mt-2">
+      <label for="price" class="col-sm-2 col-form-label">Max-Players</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control"  min="1" placeholder="Enter the maximum number of players" formControlName='maxPlayers' [ngClass]="{ 'is-invalid':submitted && f.maxPlayers.errors}">
+
+        <div *ngIf='submitted && f.maxPlayers.errors' class="invalid-feedback">
+          <div *ngIf='f.maxPlayers.errors.required'>Max is required</div>
+
+      </div>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="form-group">
+        <button type="submit" class="btn btn-dark">Insert</button>
+    </div>
+
+  </form>
+</div>

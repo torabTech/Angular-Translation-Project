@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const Game = mongoose.model("Game");
 
 const getAll = function (req, res) {
-    
   let offset = 0;
   let count = 8;
 
   if (req.query && req.query.offset) offset = parseInt(req.query.offset);
   if (req.query && req.query.count) count = parseInt(req.query.count);
 
-  console.log(`${offset} -- ${count}`);
+  //console.log(`${offset} -- ${count}`);
 
   Game.find()
     .skip(offset)
@@ -52,22 +51,14 @@ const addOne = function (req, res) {
     return;
   }
 
-  //console.log(req.body);
-
   const data = {
-      title : req.body.title,
-      year : req.body.year,
-      players : req.body.players,
+    title: req.body.title,
+    year: req.body.year,
+    price: parseInt(req.body.price),
+    maxPlayers: req.body.maxPlayers,
+  };
 
-     /*  publisher : [{
-          name : req.body.publisher[0].name,
-          country : req.body.publisher[0].country
-      }],
-      reviews : [{
-          name : req.body.reviews[0].name,
-          date : req.body.reviews[0].date
-      }] */
-  }
+  console.log(req.body);
 
   Game.create(data, function (err, result) {
     if (err) {
@@ -75,9 +66,12 @@ const addOne = function (req, res) {
       return;
     }
 
-    res.status(201).json(result);
+    res.status(201).json({ message: "Game has been successfully inserted!" });
   });
 };
+
+
+
 
 const deleteOne = function (req, res) {
   const checkID = mongoose.Types.ObjectId.isValid(req.params.id);
@@ -120,7 +114,8 @@ const updateOne = function (req, res) {
       $set: {
         title: req.body.title,
         year: req.body.year,
-        players: req.body.players,
+        price: parseInt(req.body.price),
+        maxPlayers: req.body.maxPlayers,
       },
     },
     function (err) {
@@ -128,7 +123,7 @@ const updateOne = function (req, res) {
         res.status(500).json(err.message);
         return;
       }
-      res.status(200).json({message : 'document successfully updated.'})
+      res.status(200).json({ message: "document successfully updated." });
     }
   );
 };
@@ -138,5 +133,5 @@ module.exports = {
   getOne: getOne,
   addOne: addOne,
   deleteOne: deleteOne,
-  updateOne : updateOne
+  updateOne: updateOne,
 };
